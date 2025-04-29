@@ -1,10 +1,15 @@
+import nltk
+try:
+    nltk.data.find('sentiment/vader_lexicon')
+except LookupError:
+    nltk.download('vader_lexicon')
+    
 import streamlit as st
 import requests
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import pandas as pd
 from fuzzywuzzy import process
-import nltk
-nltk.download('vader_lexicon')
+
 
 # Load the sector-to-stock mapping CSV
 df = pd.read_csv("ind_nifty500list.csv")  # Adjust the path if needed
